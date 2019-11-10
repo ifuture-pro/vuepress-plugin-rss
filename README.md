@@ -8,7 +8,11 @@ Support Atom; RSS2; Itunes podcast.
 Install
 
 ```bash
-npm install vuepress-plugin-rss --save-dev 
+npm install @ifuture/vuepress-plugin-rss --save-dev
+```
+or
+```bash
+yarn add @ifuture/vuepress-plugin-rss -D
 ```
 
 .vuepress/config.js
@@ -16,7 +20,7 @@ npm install vuepress-plugin-rss --save-dev
 ```js
 module.exports = {
   "plugins": [
-      ['rss', {
+      ['@ifuture/vuepress-plugin-rss', {
         type:['atom','rss2','podcast'],
         limit: 20,
         feedOptions : {

@@ -26,3 +26,4 @@ https://www.staticgen.com/中列举了非常多的优秀项目，非常值得学
 最简单的是使用yarn 即可直接安装包含在packages/other-module/package.js的依赖，非常方便
 
 * 尝试体验 github actions workflow CI/CD
+ .github/workflows/npmpublish.yml

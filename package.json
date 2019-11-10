@@ -1,0 +1,25 @@
+{
+  "name": "vuepress-plugin-rss",
+  "version": "1.0.0",
+  "description": "atom rss podcast",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifuture-pro/vuepress-plugin-rss.git"
+  },
+  "keywords": [
+    "atom",
+    "rss",
+    "podcast",
+    "itunes"
+  ],
+  "author": "ifuture",
+  "license": "ISC",
+  "dependencies": {
+    "nunjucks": "^3.2.0",
+    "podcast": "^1.1.0"
+  }
+}

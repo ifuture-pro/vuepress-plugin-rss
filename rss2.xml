@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>{{ config.title }}</title>
+        <link>{{ config.site_url }}</link>
+        {% if config.image_url %}
+        <image>
+            <url>{{ config.image_url }}</url>
+            <title>{{ config.title }}</title>
+            <link>{{ config.image_url }}</link>
+        </image>
+        {% endif %}
+        <atom:link href="{{ config.feed_url }}" rel="self" type="application/rss+xml"/>
+        {% if config.feed.hub %}<atom:link href="{{ config.feed.hub | uriencode }}" rel="hub"/>{% endif %}
+        <description>{{ config.description }}</description>
+        <pubDate>{{ posts[0].date }}</pubDate>
+        <generator>https://ifuture.pro</generator>
+        {% for post in posts %}
+        <item>
+            <title>{{ post.title }}</title>
+            <link>{{ config.site_url + post.permalink }}</link>
+            <guid>{{ config.site_url + post.permalink }}</guid>
+            <pubDate>{{ post.date }}</pubDate>
+            <description>
+                {% if post.description %}
+                {{ post.description }}
+                {% elif post.intro %}
+                {{ post.intro }}
+                {% elif post.excerpt %}
+                {{ post.excerpt }}
+                {% elif post.content %}
+                {% set short_content = post.content.substring(0, config.feed.content_limit) %}
+                {% if config.feed.content_limit_delim %}
+                {% set delim_pos = short_content.lastIndexOf(config.feed.content_limit_delim) %}
+                {% if delim_pos > -1 %}
+                {{ short_content.substring(0, delim_pos) }}
+                {% else %}
+                {{ short_content }}
+                {% endif %}
+                {% else %}
+                {{ short_content }}
+                {% endif %}
+                {% endif %}
+            </description>
+            {% if post.image %}
+            <enclosure url="{{ config.site_url + post.thumbnail }}" type="image" />
+            {% endif %}
+            {% if config.feed.content and post.content %}
+            <content:encoded><![CDATA[{{ post.content }}]]></content:encoded>
+            {% endif %}
+        </item>
+        {% endfor %}
+    </channel>
+</rss>

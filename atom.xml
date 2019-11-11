@@ -21,7 +21,7 @@
         <link href="{{ config.site_url + post.permalink }}"/>
         <id>{{ config.site_url + post.permalink }}</id>
         <published>{{ post.date }}</published>
-        <updated>{{ post.date }}</updated>
+        <updated>{{ post.updated }}</updated>
         {% if config.feed.content and post.content %}
         <content type="html"><![CDATA[{{ post.content }}]]></content>
         {% endif %}

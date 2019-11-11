@@ -16,6 +16,11 @@ module.exports = {
         frontmatter.content = frontmatter.content || content;
         frontmatter.description = frontmatter.description || content;
         frontmatter.permalink = page.path;
+        if (page.lastUpdated) {
+          frontmatter.updated = page.lastUpdated;
+        } else {
+          frontmatter.updated = page.date;
+        }
         return frontmatter
       })
       .sort((a,b) => {return a.date < b.date})
